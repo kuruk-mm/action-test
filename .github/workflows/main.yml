@@ -30,6 +30,7 @@ jobs:
           title: 'Merge main -> develop (resolve conflict)'
           commit-message: Merge main -> develop (resolve conflict)
           branch: chore/sync-main-to-dev-${{ github.run_id }}-${{ github.run_attempt }}
+          base: dev
           delete-branch: true
           labels: |
             automated pr
