@@ -11,10 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Opening pull request
-        id: pull
-        uses: tretuna/sync-branches@1.4.0
+      - name: Merge main -> develop
+        uses: devmasx/merge-branch@master
         with:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-          FROM_BRANCH: "main"
-          TO_BRANCH: "dev"
+          type: now
+          from_branch: main
+          target_branch: dev
+          github_token: ${{ github.token }}
