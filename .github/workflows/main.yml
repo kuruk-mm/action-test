@@ -12,10 +12,9 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Merge main -> develop
-        uses: devmasx/merge-branch@master
+        uses: everlytic/branch-merge@1.1.2
         with:
-          label_name: 'Merge main into develop'
-          type: now
-          from_branch: main
-          target_branch: dev
           github_token: ${{ github.token }}
+          source_ref: ${{ github.ref }}
+          target_branch: 'main'
+          commit_message_template: 'Merged {source_ref} into {target_branch}'
