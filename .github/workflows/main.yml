@@ -18,7 +18,7 @@ jobs:
           source_ref: ${{ github.ref }}
           target_branch: 'dev'
           commit_message_template: 'Merge main into {target_branch}'
-      - name: Create pull request merge conflict
+      - name: Create branch
         if: failure()
         run: |
           git checkout -b chore/sync-main-to-dev-${{ github.run_id }}-${{ github.run_attempt }}
@@ -26,7 +26,7 @@ jobs:
         if: failure()
         uses: peter-evans/create-pull-request@v4
         with:
-          github_token: ${{ github.token }}
+          token: ${{ github.token }}
           title: 'Merge main -> develop (resolve conflict)'
           commit-message: Merge main -> develop (resolve conflict)
           branch: chore/sync-main-to-dev-${{ github.run_id }}-${{ github.run_attempt }}
