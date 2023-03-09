@@ -2,6 +2,7 @@ name: Test CI
 
 on:
   push:
+    branches: [ main ]
 
 jobs:
   build:
@@ -10,5 +11,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Run a one-line script
-        run: echo Hello World
+      - name: Opening pull request
+        id: pull
+        uses: tretuna/sync-branches@1.4.0
+        with:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          FROM_BRANCH: "main"
+          TO_BRANCH: "dev"
