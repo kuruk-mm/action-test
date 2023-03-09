@@ -25,9 +25,8 @@ jobs:
           token: ${{ github.token }}
           title: 'Merge main -> develop (resolve conflict)'
           commit-message: Merge main -> develop (resolve conflict)
-          branch: main
-          base: dev
-          delete-branch: true
+          branch: dev
+          base: main
           labels: |
             automated pr
           draft: false
