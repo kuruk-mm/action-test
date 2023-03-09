@@ -14,6 +14,7 @@ jobs:
       - name: Merge main -> develop
         uses: devmasx/merge-branch@master
         with:
+          label_name: 'Merge main into develop'
           type: now
           from_branch: main
           target_branch: dev
