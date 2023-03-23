@@ -17,7 +17,6 @@ jobs:
           title: 'Merge main -> develop (resolve conflict)'
           commit-message: Merge main -> develop (resolve conflict)
           branch: chore/sync
-          base: dev
           labels: |
             automated pr
           draft: false
