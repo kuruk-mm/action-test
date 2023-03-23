@@ -10,16 +10,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-
-      - name: Merge main -> develop
-        uses: everlytic/branch-merge@1.1.2
-        with:
-          github_token: ${{ github.token }}
-          source_ref: ${{ github.ref }}
-          target_branch: 'dev'
-          commit_message_template: 'Merge main into {target_branch}'
       - name: Create pull request merge conflict
-        if: failure()
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ github.token }}
