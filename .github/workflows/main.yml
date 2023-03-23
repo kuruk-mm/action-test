@@ -10,13 +10,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - name: Create pull request merge conflict
-        uses: peter-evans/create-pull-request@v4
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          title: 'Merge main -> develop (resolve conflict)'
-          commit-message: Merge main -> develop (resolve conflict)
-          branch: chore/sync
-          labels: |
-            automated pr
-          draft: false
+          source_branch: "main"                                 # If blank, default: triggered branch
+          destination_branch: "dev"                      # If blank, default: master
+          pr_title: "Pulling ${{ github.ref }} into master" # Title of pull request
+          pr_body: |                                        # Full markdown support, requires pr_title to be set
+            :crown: *An automated PR*
+
+            _Created by [repo-sync/pull-request](https://github.com/repo-sync/pull-request)_
+          pr_label: "auto-pr"                               # Comma-separated list (no spaces)
+          pr_draft: true                                    # Creates pull request as draft
+          pr_allow_empty: true                              # Creates pull request even if there are no changes
+          github_token: ${{ secrets.GITHUB_TOKEN }}      # If blank, default: secrets.GITHUB_TOKEN
