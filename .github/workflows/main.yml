@@ -22,7 +22,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ github.token }}
-          branch-suffix: chore-sync
+          branch-suffix: timestamp
           base: dev
           delete-branch: true
           title: 'Merge main -> develop (resolve conflict)'
