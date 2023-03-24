@@ -18,6 +18,7 @@ jobs:
           target_branch: 'dev'
           commit_message_template: 'Merge main into {target_branch}'
       - name: Create or update branch
+        if: failure()
         run: |
           git checkout -B chore/sync
           git push --set-upstream origin chore/sync
