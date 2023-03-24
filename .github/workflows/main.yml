@@ -21,7 +21,7 @@ jobs:
         if: failure()
         run: |
           git checkout -B chore/sync
-          git push --set-upstream origin chore/sync
+          git push --force --set-upstream origin chore/sync
       - name: pull-request
         if: failure()
         uses: repo-sync/pull-request@v2
