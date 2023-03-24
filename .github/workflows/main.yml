@@ -17,11 +17,15 @@ jobs:
           source_ref: ${{ github.ref }}
           target_branch: 'dev'
           commit_message_template: 'Merge main into {target_branch}'
+      - name: Create or update branch
+        run: |
+          git checkout -B chore/sync
+          git push --set-upstream origin chore/sync
       - name: pull-request
         if: failure()
         uses: repo-sync/pull-request@v2
         with:
-          source_branch: "main"                                # If blank, default: triggered branch
+          source_branch: "chore/sync"                          # If blank, default: triggered branch
           destination_branch: "dev"                            # If blank, default: master
           pr_title: "Merge main -> develop (resolve conflict)" # Title of pull request
           pr_body: |                                           # Full markdown support, requires pr_title to be set
